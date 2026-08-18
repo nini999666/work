@@ -68,7 +68,7 @@ web/
 
 <hr>
 
-## 🧩 Deletion Rules：
+## 🧩 Deletion-Rules：
 ```
 A、【全部功能块】：
 1. 如果仅有一期且开错，删除
@@ -105,7 +105,7 @@ E、【其它】：
 3.玄机解特, 保留最新的10期 ('IS_10')
 ```
 
-### Explanation of deletion rules
+### Explanation-of-deletion-rules
 ```
 processors文件夹中python文件最后的字段，表示应用的删除规则，如：
 ('content', '平特xx', True, 'IS_PT')，
