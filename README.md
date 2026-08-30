@@ -68,8 +68,8 @@ web/
 
 <hr>
 
-## 🧩 Deletion-Rules：
-删除规则
+##  Deletion-Rules：
+🧩删除规则
 ```
 A、【全部功能块】：
 1. 如果仅有一期且错，全删
@@ -107,8 +107,8 @@ E、【其它】：
 3.玄机解特, 保留最新的10期 ('IS_10')
 ```
 
-### Explanation-of-deletion-rules
-删除规则解释
+## Explanation-of-deletion-rules
+🦞删除规则解释
 ```
 1. processors文件夹中python文件最后的字段，表示应用的删除规则。
 2. 子项C1.1/C1.2 涵盖 C1 全部规则，并在此基础上扩展功能。依次类推。
