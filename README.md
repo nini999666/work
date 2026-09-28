@@ -158,33 +158,43 @@ C、【中特功能块】：
 1.防止操作失误时，用备份包继续改，
 2.发现问题，直接把备份包给到我，我这边跑一下让问题复现，方便最快地找到问题的原因。
 
-1.测试教程
+0.测试教程
 把我的程序包，解压到web目录，如果没有最新期的开奖数据，就复制一个之前的，把期数改一下就好。
 啥也不用改，直接双击bat文件，看看结果。
 主要看有没有报 error 错误
 对照日志，随机抽几个功能块，看有没有更改成想要的结果
 
-2.该删的期数没删，或是删除的内容跟预期的不一致。
-在python文件的block_configs中找到('xxnr', '跑来跑去', None, True, 'IS_PT')，
-最后一个字段'IS_PT'对应着删除规则，修改为对应的规则就好
+1. 运行报错，出错：invalid literal for int() with base 10: '--'
+kaijian_data.json中有错误的字符 '--'，把错误的这一期去掉。
 
-3.日志提示无需修改HTML文件
-检查python文件最后一行 return True，是否被注释#，如果是，就把'#'去掉
-如果是"已存在相同的内容"，说明这个html这期已被修改过了。替换掉html内容即可
+2. 想让某些期数出错立马删了。
+bbs中的html对应着  Modify_HTML\bbs_processors 同名的python文件，
+bbs1中的html对应着 Modify_HTML\bbs_processors_HK 同名的python文件。
+在python文件的block_configs中找到('box', '跑来跑去', True, 'IS_ZT8')，
+把最后一个字段加上 '_1', 如 ('box', '跑来跑去', True, 'IS_ZT8_1')
 
-4.提示"未找到对应数据"
+3.提示"未找到对应数据"
 搜索字典中 kaijian_data.py 中，是否有对应字段。
 如html中给出的内容是 <p >341期:成语<a><s></s>【明明白白】</a><f>开:<a>？00</a>准</f></p>
 在字典中 kaijian_data.py 搜"明明白白"，发现get_abc这个函数中字段不存在，就需要补全字典。
 或是【明明白白】写成了 【明明——白白】就需要修改html文件为正确的内容。
-
-在对应的python中，也可找到调用的是哪个函数 kd.get_abc(edf)，在kaijian_data.py中找到这个函数，
+在对应的python中，也可找到调用的是哪个函数 kd.get_abc(kkk)，在kaijian_data.py中找到这个函数，
 abc = {
     "牛": {"哭来哭去呀", "明明白白呀"},
     "猪": {"高高兴兴呀", }
 }
 def get_abc()
 ```
+
+4.该删的期数没删，或是删除的内容跟预期的不一致。
+在python文件的block_configs中找到('xxnr', '跑来跑去', None, True, 'IS_PT')，
+最后一个字段'IS_PT'对应着删除规则，修改为对应的规则就好
+
+5.日志提示无需修改HTML文件
+检查python文件最后一行 return True，是否被注释#，如果是，就把'#'去掉
+如果是"已存在相同的内容"，说明这个html这期已被修改过了。替换掉html内容即可
+
+
 
 ## 六、📝 关于提问题，请明确功能块位置, 可参考如下：
 ```
